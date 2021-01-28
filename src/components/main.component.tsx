@@ -44,6 +44,9 @@ export const MainComponent: React.FC = () => {
                         <Route exact path ="/faq">
                             {/* <FAQComponent/> */}
                         </Route>
+                        <Route path="/user">
+                            
+                        </Route>
                     </Fragment>
                 </Switch>
             </main>
