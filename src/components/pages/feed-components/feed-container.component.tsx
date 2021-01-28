@@ -94,12 +94,9 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
             retrievedPageable = await questionRemote.getAllQuestionsByLocation(size, page, location);
             tab = 0;
             setView(view);
-            if (retrievedPageable.numberOfElements === 0) {
-                return;
-            }
         } else if (view === 'question') {
             const location = questionType === QuestionType.Location ? filterText : null;
-            retrievedPageable = await questionRemote.getAllUserQuestionsByLocation(size, page,location, userId);
+            retrievedPageable = await questionRemote.getAllUserQuestionsByLocation(size, page, location, userId);
             tab = 1;
             setView(view)
         } else if (view === 'answer') {
@@ -110,8 +107,7 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
             retrievedPageable = await questionRemote.getUnconfirmedQuestions(size, page);
             tab = 3;
             setView(view)
-        } 
-        /////////////////ADDED THIS FAQ TAB /////////////////
+        }
         else if (view === 'faq') {
             const location = questionType === QuestionType.Location ? filterText : null;
             retrievedPageable = await questionRemote.getAllQuestionsByLocation(size, page, location);
@@ -121,12 +117,6 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
 
         props.clickTab(retrievedPageable.content, tab, retrievedPageable.totalPages, retrievedPageable.number);
     }
-
-    // Set view to recent if there are no questions to display.
-    // This is stupid. Don't do this.
-    // if (props.storeQuestions.length === 0 && view === 'recent') {
-    //     load("recent", 0);
-    // }
 
     /**
      * Maps the questions or answers into feed boxes to be displayed within the feed container.
@@ -139,14 +129,14 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
                     <FeedBoxComponent key={question.id} question={question} questionContent={question.content} view={view} />
                 )
             })
-        
 
-        //ADDED THIS FAQ FILTER LOGIC
-        }else if (view === 'faq') {
+
+            //ADDED THIS FAQ FILTER LOGIC
+        } else if (view === 'faq') {
             filteredQuestions = props.storeQuestions.filter(question => question.isFaq === true);
             return filteredQuestions.map(question => {
                 return (
-                    <FeedBoxComponent key={question.id} question={question} questionContent={question.content} view={view}/>
+                    <FeedBoxComponent key={question.id} question={question} questionContent={question.content} view={view} />
                 )
             })
         }
@@ -188,18 +178,18 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
             <Container className={classes.containerInternal}>
                 <Box justifyContent="flex-end" display="flex">
                     <ThemeProvider theme={theme} >
-                        <Button variant="contained" color="secondary" style={{margin:'0.5em'}} onClick={() => handleRedirect()}>
+                        <Button variant="contained" color="secondary" style={{ margin: '0.5em' }} onClick={() => handleRedirect()}>
                             Ask a Question
                     </Button>
                     </ThemeProvider>
                     <ThemeProvider theme={theme}>
-                        {(view === 'faq' && admin === 'true') ? <Button id="add-FAQ-button" variant="contained" color="secondary" style={{margin:'0.5em'}} onClick={()=>clickAdd()}>
-                        Add FAQ
-                    </Button>:""}
+                        {(view === 'faq' && admin === 'true') ? <Button id="add-FAQ-button" variant="contained" color="secondary" style={{ margin: '0.5em' }} onClick={() => clickAdd()}>
+                            Add FAQ
+                    </Button> : ""}
                     </ThemeProvider>
                 </Box>
                 <Box justifyContent="flex-end" display="flex">
-                    
+
                 </Box>
                 <ThemeProvider theme={theme} >
                     <Box justifyContent="center" display="flex" className={classes.boxExternal}>
@@ -220,7 +210,8 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
                             {admin === 'true' ? <Tab icon={<ConfirmationNumberOutlinedIcon fontSize="large" onClick={(e) => load("confirm", 0)} />}
                                 label="CONFIRM" className={classes.boxInternal} /> : ""}
                             {/* ADDED THIS FAQ BUTTON TO SHOW UP ON FEED PAGE */}
-                            <Tab icon={<QuestionAnswerIcon fontSize="large"/>} id="FAQ-Tab" label = "FAQ" className={classes.boxInternal} onClick={(e) => load('faq', 0)}/>
+                            <Tab icon={<QuestionAnswerIcon fontSize="large" />} id="FAQ-Tab" label="FAQ" className={classes.boxInternal}
+                                onClick={(e) => load('faq', 0)} />
                         </Tabs>
                     </Box>
                     {/* Only show the question filter if we are on a question tab */}
@@ -252,7 +243,7 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
                                 /> :
                                 <></>
                             }
-                            <Button onClick={() => handleFilter()} variant="outlined" style={{marginLeft: '1rem'}}>Filter</Button>
+                            <Button onClick={() => handleFilter()} variant="outlined" style={{ marginLeft: '1rem' }}>Filter</Button>
                         </Box> :
                         <></>
                     }
