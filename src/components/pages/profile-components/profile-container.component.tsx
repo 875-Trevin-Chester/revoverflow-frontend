@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { Box, Container, makeStyles} from '@material-ui/core';
+import { Box, Container, createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core';
 import ProfileBoxComponent from './profile-box.component';
 import { BreadcrumbBarComponent } from '../breadcrumb-bar.component';
 import { Question } from '../../../models/question';
@@ -13,7 +13,16 @@ import { connect } from 'react-redux';
 import * as questionRemote from '../../../remotes/question.remote';
 import { Pagination } from '@material-ui/lab';
 
-
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#f26925',
+        },
+        secondary: {
+            main: '#3498db',
+        }
+    },
+});
 
 const useStyles = makeStyles({
     boxExternal: {
@@ -30,8 +39,6 @@ const useStyles = makeStyles({
         marginLeft: 20,
     }
 });
-
-
 
 export const ProfileContainerComponent = () => {
     const postsPerPage = 10;
@@ -65,11 +72,8 @@ export const ProfileContainerComponent = () => {
         }
     };
 
-    const changePage = (questions: Question[], tab: number, pageCount: number, page: number) => {
-
-    }
-
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        console.log("Page change value:", value);
         getUserQuestions(userId, postsPerPage, value - 1);
     };
 
@@ -92,20 +96,21 @@ export const ProfileContainerComponent = () => {
     return (
         <div>
             <BreadcrumbBarComponent />
-            <Container className={classes.containerInternal}>
-                <div style={{ width: '100%' }}>
-                    <Box display="flex" flexDirection="column" justifyContent="center" >
-                        {renderProfileBoxComponents()}
+            <ThemeProvider theme={theme} >
+                <Container className={classes.containerInternal}>
+                    {/* User Questions */}
+                    <div style={{ width: '100%' }}>
+                        <Box display="flex" flexDirection="column" justifyContent="center" >
+                            {renderProfileBoxComponents()}
+                        </Box>
+                    </div>
+
+                    {/* Pagination page switching */}
+                    <Box display="flex" justifyContent="center" padding={5}>
+                        <Pagination size="medium" count={userQuestions?.length} page={currentPage + 1} color="secondary" onChange={handlePageChange} />
                     </Box>
-                </div>
-
-                {/* Pagination page switching */}
-                <Box display="flex" justifyContent="center" padding={5}>
-                    <Pagination size="medium" count={userQuestions?.length} page={currentPage + 1} color="secondary" onChange={handlePageChange} />
-                </Box>
-            </Container>
-
-            
+                </Container>
+            </ThemeProvider>   
         </div>
     );
 }
