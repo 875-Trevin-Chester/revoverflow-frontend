@@ -41,15 +41,24 @@ export const ProfileContainerComponent = () => {
     const userId = parseInt(splitURL[splitURL.length - 1]);
     const [userQuestions, setUserQuestions] = useState<Question[]>();
     const [currentPage, setCurrentPage] = useState<number>(0);
-    const [viewedQuestions, setViewedQuestions] = useState<Question[]>([]);
     
     useEffect(()=>{
-        getUserQuestions();
-    }, [])
+        getUserQuestions(userId, postsPerPage, 0);
+    }, [userId])
  
-    const getUserQuestions = async () => {
+    // // Save this
+    // const getUserQuestions = async () => {
+    //     try {
+    //         const response = await questionRemote.getQuestionsByUserId(userId, postsPerPage, 0);
+    //         setUserQuestions(response);
+    //     } catch {
+    //         alert("Could not set the user questions.");
+    //     }
+    // };
+
+    const getUserQuestions = async (userId: number, postsPerPage: number, page: number) => {
         try {
-            const response = await questionRemote.getQuestionsByUserId(userId, postsPerPage, 0);
+            const response = await questionRemote.getQuestionsByUserId(userId, postsPerPage, page);
             setUserQuestions(response);
         } catch {
             alert("Could not set the user questions.");
@@ -60,9 +69,9 @@ export const ProfileContainerComponent = () => {
 
     }
 
-    // const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    //     load(view, value - 1);
-    // };
+    const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        getUserQuestions(userId, postsPerPage, value - 1);
+    };
 
     /**
      * Maps the questions or answers into feed boxes to be displayed within the feed container.
@@ -90,9 +99,10 @@ export const ProfileContainerComponent = () => {
                     </Box>
                 </div>
 
-                {/* <Box display="flex" justifyContent="center" padding={5}>
+                {/* Pagination page switching */}
+                <Box display="flex" justifyContent="center" padding={5}>
                     <Pagination size="medium" count={userQuestions?.length} page={currentPage + 1} color="secondary" onChange={handlePageChange} />
-                </Box> */}
+                </Box>
             </Container>
 
             
