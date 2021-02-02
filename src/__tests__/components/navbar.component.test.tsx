@@ -3,11 +3,11 @@ import { NavbarComponent } from '../../components/navbar.component';
 import { mount } from 'enzyme';
 
 
-describe('feed-container.component', () => {
+describe('navbar.component.tsx', () => {
 
     test('should render', () => {
-        
-        const wrapper = mount(<NavbarComponent  />);
+
+        const wrapper = mount(<NavbarComponent />);
         expect(wrapper).toBeDefined();
     })
 });

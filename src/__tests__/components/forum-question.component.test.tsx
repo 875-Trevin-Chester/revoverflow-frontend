@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { ForumQuestionComponent, ForumQuestionComponentProps } from '../../components/pages/forum-components/forum-question.component';
 import {Question} from "../../models/question";
 
-describe("<forum-question.component.tsx", () => {
+describe("forum-question.component.tsx", () => {
      it('should render without crashing', () => {
 
     //     const testQ: Question = {
