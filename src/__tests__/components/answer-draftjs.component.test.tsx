@@ -3,7 +3,7 @@ import { AnswerRichTextEditorComponent, AnswerRichTextEditorComponentProps } fro
 import { mount } from 'enzyme';
 
 
-describe('feed-container.component', () => {
+describe('forum.components --> rich-text-editor-component --> AnswerRichTextEditorComponentProps', () => {
 
     test('should render', () => {
         const props: AnswerRichTextEditorComponentProps = {

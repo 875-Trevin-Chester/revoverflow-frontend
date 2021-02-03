@@ -84,8 +84,10 @@ export const ForumQuestionComponent: React.FC<ForumQuestionComponentProps> = (pr
         }
     }
 
-
-    //COME BACK TO THIS ONCE BACKEND LOGIC IS FINISHED
+    /**
+     * this function updates the isFaq boolean of an already submitted question
+     * Question will show up in the 'faq' view once this method's logic has been executed
+     */
     const addFAQ = async () => {
         console.log("adding to faq view simulated");
         //axios call to update question faq status
@@ -101,7 +103,6 @@ export const ForumQuestionComponent: React.FC<ForumQuestionComponentProps> = (pr
         try {
             const retrievedQuestion = await questionRemote.updateQuestionFAQStatus(questionInfo);
             localStorage.setItem("question", JSON.stringify(retrievedQuestion.data));
-            // props.clickConfirm(retrievedQuestion.data, true);
             window.location.reload(false);
         } catch {
             alert("You encountered an error2");
@@ -141,7 +142,6 @@ export const ForumQuestionComponent: React.FC<ForumQuestionComponentProps> = (pr
                                 </Box>
 
                                 {/* ADDING FAQ ADD BUTTON */}
-                                {/* WILL NEED TO CHANGE THIS BOOLEAN CHECK LATER */}
                                 <Box display="flex" paddingLeft={2}>
                                     {((admin === 'true') && (props.storeQuestion.isFaq === false)) ? 
                                     <Button className={classes.buttonInternal} size="large" variant="contained" color="secondary" onClick={()=>addFAQ()}>

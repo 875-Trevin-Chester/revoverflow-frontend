@@ -11,10 +11,6 @@ import  ProfileContainerComponent from './pages/profile-components/profile-conta
 
 
 
-
-
-
-
 export const MainComponent: React.FC = () => {
     return <div id="main-component">
         <BrowserRouter>
@@ -23,11 +19,6 @@ export const MainComponent: React.FC = () => {
                     <Route exact path="/">
                         <LoginComponent />
                     </Route>
-
-                    {/* <Route exact path="/">
-                        <LoginFirebase />
-                    </Route> */}
-
                     <Fragment>
                         <NavbarComponent />
                         <Route exact path="/feed">
@@ -40,15 +31,12 @@ export const MainComponent: React.FC = () => {
                             <RichTextEditorComponent />
                         </Route>
 
-                        {/* MIGHT NEED THIS FOR ADDING A NEW faq QUESTION */}
+                        {/* THIS IS USED FOR MANUALLY CREATING A NEW FAQ */}
                         <Route exact path="/question/faq">
                             <RichTextEditorComponent/>
                         </Route>
 
-                        {/* THIS MAY NOT BE NECESSARY */}
-                        <Route exact path ="/faq">
-                            {/* <FAQComponent/> */}
-                        </Route>
+                        
 
                         <Route path ="/user/:id">
                             <ProfileContainerComponent/>

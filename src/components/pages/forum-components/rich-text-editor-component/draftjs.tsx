@@ -321,15 +321,15 @@ export const RichTextEditorComponent: React.FC = () => {
                             <Box display="inline-flex">
                                 <Typography variant="h5"  >
                                     Type:
-                                   
+                                
                                 </Typography>
                             </Box>
                             
                             <RadioGroup name="revature" value={radioVal} style={{display: 'inline-flex'}} onChange={e => {
                         
-                               setRadioVal(parseInt(e.currentTarget.value))
+                            setRadioVal(parseInt(e.currentTarget.value))
                                 
-                               setDisabled(radioVal === QuestionType.Location)
+                            setDisabled(radioVal === QuestionType.Location)
                                 } } row>
 
                             <FormControlLabel className={classes.locationBlock} value={QuestionType.General} control={<Radio />} label="Revature" ></FormControlLabel>

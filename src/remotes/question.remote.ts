@@ -106,6 +106,12 @@ export const getAllUserQuestionsByLocation = async (size: number, page: number, 
     return response.data;
 }
 
+/**
+ * Updates isFaq boolean for a given question in the backend (i.e., changes to true)
+ * Note that the changing of the value occurs in the service layer of the backend, so passing in false here
+ * is expected, though not necessary.
+ * @param questionStatus - this is a question object that will be read and interpreted by the backend endpoint
+ */
 export const updateQuestionFAQStatus = async (questionStatus: any) => {
     const response = await authAxios.post<Question>(`/questions/faq`, questionStatus);
     return response;

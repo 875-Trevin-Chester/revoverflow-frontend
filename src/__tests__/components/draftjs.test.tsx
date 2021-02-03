@@ -3,10 +3,10 @@ import { RichTextEditorComponent } from '../../components/pages/forum-components
 import { mount } from 'enzyme';
 
 
-describe('feed-container.component', () => {
+describe('draftjs.tsx', () => {
 
     test('should render', () => {
-        
+
         const wrapper = mount(<RichTextEditorComponent />);
         expect(wrapper).toBeDefined();
     })

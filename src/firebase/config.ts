@@ -1,9 +1,12 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-//After downlaoding and making firebase make this initialize App
-// This is what gives us access to the Firebase authentication
-//information can be found at https://firebase.google.com/
+/*This is what gives us access to the Firebase authentication
+information can be found at https://firebase.google.com/ 
+*/
+
+/*Replace the below code with your own firebase credentials 
+to integrate it to your firebase application*/
 
 firebase.initializeApp({
     apiKey: "AIzaSyDHEVKh9NRb3QJJsD-im1lmOhb61iaA-MA",
