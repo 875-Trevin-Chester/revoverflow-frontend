@@ -186,17 +186,17 @@ export const NavbarComponent: React.FC = () => {
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
-  const handleMenuClose =  () => {
+  const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    localStorage.removeItem("accessToken");
-    localStorage.clear()
-    
-    firebase.auth().signOut().then(response =>{
+
+
+
+    firebase.auth().signOut().then(response => {
       console.log(firebase.auth().currentUser)
     })
     // await  console.log(firebase.auth().currentUser)
-    
+
   };
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -209,7 +209,11 @@ export const NavbarComponent: React.FC = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={() => handleMenuClose()}> <Typography onClick={() => history.push("/")}> Log Out </Typography></MenuItem>
+      <MenuItem onClick={() => handleMenuClose()}> <Typography onClick={() => {
+        localStorage.removeItem("accessToken");
+        localStorage.clear()
+        history.push("/")
+      }}> Log Out </Typography></MenuItem>
 
     </Menu>
   );
@@ -239,12 +243,12 @@ export const NavbarComponent: React.FC = () => {
     if (gettingPoints) {
       try {
         const response = await loginRemote.getUserById(+JSON.parse(JSON.stringify(localStorage.getItem('userId'))));
-        if(localStorage.getItem("points") != undefined)
+        if (localStorage.getItem("points") != undefined)
           localStorage.setItem('points', JSON.stringify(response.data.points));
       } catch {
         alert('Couldnt retrieve points')
       }
-      if(localStorage.getItem("points") != undefined)
+      if (localStorage.getItem("points") != undefined)
         setPoints(localStorage.getItem("points"));
     }
   };
