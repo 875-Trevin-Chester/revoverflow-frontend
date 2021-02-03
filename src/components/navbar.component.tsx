@@ -36,7 +36,7 @@ import { useHistory } from "react-router";
 import { Menu, MenuItem, Box } from "@material-ui/core";
 import * as loginRemote from '../remotes/login.remote'
 import firebase from '../firebase/config';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 const drawerWidth = 240;
@@ -370,7 +370,7 @@ export const NavbarComponent: React.FC = () => {
               key={text}
             >
               <ListItemIcon>
-                <AccountCircleIcon
+                <AccountCircle
                   onClick={() => {
                     history.push("/myprofile/" + localStorage.getItem('userId'));
                   }}
