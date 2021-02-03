@@ -333,7 +333,7 @@ export const NavbarComponent: React.FC = () => {
               key={text}
             >
               <ListItemIcon>
-                <LiveHelpIcon
+                <QuestionAnswerIcon
                   onClick={() => history.push("/feed")}
                   style={{ color: "#F26925" }}
                 />
@@ -352,7 +352,7 @@ export const NavbarComponent: React.FC = () => {
               key={text}
             >
               <ListItemIcon>
-                <QuestionAnswerIcon
+                <LiveHelpIcon
                   onClick={() => {
                     history.push("/question");
                   }}
@@ -373,7 +373,7 @@ export const NavbarComponent: React.FC = () => {
               key={text}
             >
               <ListItemIcon>
-                <QuestionAnswerIcon
+                <AccountCircle
                   onClick={() => {
                     history.push("/user/" + localStorage.getItem('userId'));
                   }}
