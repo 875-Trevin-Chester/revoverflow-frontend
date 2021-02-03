@@ -11,10 +11,6 @@ import  ProfileContainerComponent from './pages/profile-components/profile-conta
 
 
 
-
-
-
-
 export const MainComponent: React.FC = () => {
     return <div id="main-component">
         <BrowserRouter>
@@ -23,11 +19,6 @@ export const MainComponent: React.FC = () => {
                     <Route exact path="/">
                         <LoginComponent />
                     </Route>
-
-                    {/* <Route exact path="/">
-                        <LoginFirebase />
-                    </Route> */}
-
                     <Fragment>
                         <NavbarComponent />
                         <Route exact path="/feed">

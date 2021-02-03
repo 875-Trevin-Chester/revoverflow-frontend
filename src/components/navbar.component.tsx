@@ -190,12 +190,9 @@ export const NavbarComponent: React.FC = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
 
-
-
     firebase.auth().signOut().then(response => {
       console.log(firebase.auth().currentUser)
     })
-    // await  console.log(firebase.auth().currentUser)
 
   };
   const menuId = "primary-search-account-menu";
