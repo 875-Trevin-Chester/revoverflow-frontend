@@ -37,6 +37,7 @@ import { Menu, MenuItem, Box } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import * as loginRemote from '../remotes/login.remote'
 import firebase from '../firebase/config';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 const drawerWidth = 240;
@@ -362,16 +363,16 @@ export const NavbarComponent: React.FC = () => {
           {["Profile Page"].map((text, index) => (
             <ListItem
               onClick={() => {
-                history.push("/user/" + localStorage.getItem('userId'));
+                history.push("/myprofile/" + localStorage.getItem('userId'));
               }}
               style={{ color: "#F26925" }}
               button
               key={text}
             >
               <ListItemIcon>
-                <QuestionAnswerIcon
+                <AccountCircleIcon
                   onClick={() => {
-                    history.push("/user/" + localStorage.getItem('userId'));
+                    history.push("/myprofile/" + localStorage.getItem('userId'));
                   }}
                   style={{ color: "#F26925" }}
                 />

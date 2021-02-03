@@ -53,6 +53,9 @@ export const MainComponent: React.FC = () => {
                         <Route path ="/user/:id">
                             <ProfileContainerComponent/>
                         </Route>
+                        <Route exact path ="/myProfile/:id">
+                            <ProfileContainerComponent/>
+                        </Route>
                     </Fragment>
                 </Switch>
             </main>

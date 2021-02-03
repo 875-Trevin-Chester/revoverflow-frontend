@@ -36,8 +36,9 @@ export const ProfileContainerComponent = () => {
 
     const classes = useStyles();
     const splitURL = window.location.href.split("/");
-    const userId = parseInt(splitURL[splitURL.length - 1]);
+    //const userId = parseInt(splitURL[splitURL.length - 1]);
     const [userQuestions, setUserQuestions] = useState<Question[]>();
+    const [userId, setUserId] = useState(parseInt(splitURL[splitURL.length - 1]));
     
     // Load specific user questions when the ProfileContainerComponent is loaded
     useEffect(()=>{
