@@ -34,7 +34,6 @@ import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 import { useHistory } from "react-router";
 import { Menu, MenuItem, Box } from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import * as loginRemote from '../remotes/login.remote'
 import firebase from '../firebase/config';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
