@@ -158,7 +158,7 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
     const handleRedirect = () => {
         history.push('/question');
     }
-    
+
     const handleFilter = async () => {
         // just refreshes the filter
         load(view, 0);
@@ -217,7 +217,7 @@ export const FeedContainerComponent: React.FC<FeedContainerComponentProps> = (pr
                     </Box>
                     {/* Only show the question filter if we are on a question tab */}
                     {view !== 'answer' ?
-                        <Box className={classes.boxInternal} display='flex' justifyContent='center' alignItems='center' m={2}>
+                        <Box className={classes.boxInternal} style={{ margin: '1.9rem' }} display='flex' justifyContent='center' alignItems='center' m={2}>
                             <RadioGroup value={questionType} onChange={e => setQuestionType(parseInt(e.currentTarget.value))}>
                                 <FormControlLabel
                                     id="revQfilter"
