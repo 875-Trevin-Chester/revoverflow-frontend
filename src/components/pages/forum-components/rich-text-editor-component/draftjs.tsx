@@ -98,10 +98,10 @@ const styleMap = {
 };
 
 export const RichTextEditorComponent: React.FC = () => {
-    //Reads in the locations.json in the data folder.
-
+    
     enum QuestionType { General, Technology, Location}
-    const geographicSet = locations;
+
+    const geographicSet = locations; //Reads in the locations.json in the data folder.
     const classes = useStyles();
     const history = useHistory();
     const [disabled, setDisabled] = useState(true);
@@ -313,10 +313,10 @@ export const RichTextEditorComponent: React.FC = () => {
                         </Box>
                     </Box>
 
-                    {/* Set location box */}
+                    {/* Designate the type of question being asked. Current options are General, Technology, Location. 
+                    Location unlocks a dropdown that is connected to the locations.JSON in the data folder. */}
                     <Box display="flex" flexDirection="" paddingBottom={3}>
 
-                        {/* Creates a dropdown with the options being read in from the locations.Json located in the data folder  */}
                         <div >
                             <Box display="inline-flex">
                                 <Typography variant="h5"  >
@@ -340,8 +340,10 @@ export const RichTextEditorComponent: React.FC = () => {
 
                             </RadioGroup>
 
+                            {/* Set location box */}    
                             <Box display="inline-flex" className={classes.dropDownTool}>
 
+                                {/* Creates a dropdown with the options being read in from the locations.Json located in the data folder  */}
                                 <FormControl fullWidth variant="outlined">
                                     <select name="question-location" disabled={disabled} className={classes.fontDropDown} onChange={(e) => { setGeoState(e.currentTarget.value); e.stopPropagation(); }}>
                                         {geographicSet.map((location) => {
