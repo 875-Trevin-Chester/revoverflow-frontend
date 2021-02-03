@@ -27,6 +27,14 @@ const useStyles = makeStyles({
     },
     divInternal: {
         paddingTop: 20
+    },
+    contentStyle: {
+        padding: 20,
+        fontSize: "1.5em"
+
+    },
+    questionHeader: {
+        fontSize: "2em"
     }
 });
 
@@ -86,10 +94,11 @@ export const FeedBoxComponent: React.FC<FeedBoxComponentProps> = (props) => {
                     <Box>
                         <Box display="flex" justifyContent="center" onClick={() => handleRedirectQ()} >
                             <Box paddingLeft={2} paddingRight={2}>
-                                <h2>{props.question.title}</h2>
-                                <div><Editor editorState={questionContent} readOnly={true} onChange={onChange} /></div>
+                                <h2 className={classes.questionHeader}>{props.question.title}</h2>
+                                <div className={classes.contentStyle}><Editor textAlignment={"center"} editorState={questionContent} readOnly={true} onChange={onChange} /></div>
                                 <h3>{props.question.userId}</h3>
-                                <p>{props.question.location ? `Location: ${props.question.location}` : props.question.questionType}</p>
+                                <hr></hr>
+                                <p>{props.question.location ? `Location: ${props.question.location}` : `Type: ${props.question.questionType}`}</p>
                                 <p>{props.question.creationDate}</p>
                             </Box>
                         </Box>
